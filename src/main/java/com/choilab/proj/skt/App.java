@@ -15,13 +15,14 @@ public class App {
 	static String strOutput = "";
 
 	public static void main(String[] args) {
-		if (args.length != 1) {
-			System.out.println("argument error");
-			System.exit(1);
-		}
+//		if (args.length != 1) {
+//			System.out.println("argument error");
+//			System.exit(1);
+//		}
 		// read file
 		BufferedReader fileReader = null;
-		String fileName = args[0];
+		//String fileName = args[0];
+		String fileName = "./test_input.txt";
 
 		try {
 			fileReader = new BufferedReader(new FileReader(fileName));
