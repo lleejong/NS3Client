@@ -60,7 +60,27 @@ public class App {
 			}
 			fileReader.close();
 			
-			System.out.println(exec(txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+""));
+			String output = exec(txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
+			System.out.println(output);
+			
+//			Messenger messenger = new Messenger(ip, 8888);
+//			
+//			messenger.sendMsg("[CHECK]/" + txLoss + "/" + txDelay+"/" + txJitter + "/" + rxLoss + "," + rxDelay + "/" + rxJitter);
+//			String fromServer = messenger.getMsg();
+//			//System.out.println("--From Server : " + fromServer);
+//			if(fromServer.equals("[HIT]")){
+//				System.out.println("[HIT] " + txLoss + "," + txDelay+"," + txJitter + "," + rxLoss + "," + rxDelay + "," + rxJitter+" ");
+//			}
+//			else{
+//				System.out.println("[FALSE]");
+//				System.out.println("--Execute NS3-DCE .. ");
+//				String output = exec(txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
+//				System.out.println("--DCE Result : " + output);
+//				messenger.sendMsg(output);
+//			}
+//			
+//			messenger.close();
+			
 //			
 //			// communicate with server
 //			Socket socket = null;
