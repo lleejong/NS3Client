@@ -11,6 +11,7 @@ import java.net.Socket;
 
 public class App {
 
+	private static final String external_prog = "./shell_sim.sh";
 	private static final String ip = "172.17.0.2";
 	static String strOutput = "";
 
@@ -60,7 +61,7 @@ public class App {
 			}
 			fileReader.close();
 			
-			String output = exec(txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
+			String output = exec(external_prog, txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
 			System.out.println(output);
 			
 //			Messenger messenger = new Messenger(ip, 8888);
@@ -110,6 +111,7 @@ public class App {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 
 	}
