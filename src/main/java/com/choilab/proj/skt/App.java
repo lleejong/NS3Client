@@ -24,12 +24,13 @@ public class App {
 		BufferedReader fileReader = null;
 		//String fileName = args[0];
 		String fileName = "./test_input.txt";
+		int randNum = Integer.parseInt(args[0]);
 
 		try {
 			fileReader = new BufferedReader(new FileReader(fileName));
 			String line = null;
 			fileReader.readLine();
-			int rand = (int) (Math.random() * 3) + 1;
+			int rand = (int) (Math.random() * randNum) + 1;
 			int cnt = 0;
 
 			double txLoss = -1;
@@ -82,7 +83,7 @@ public class App {
 				System.out.println("--Execute NS3-DCE .. ");
 				String output = exec(txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
 				System.out.println("--DCE Result : " + output);
-				messenger.sendMsg("[UPDATE]/" + output);
+				messenger.sendMsg(output);
 			}
 			
 			messenger.close();
