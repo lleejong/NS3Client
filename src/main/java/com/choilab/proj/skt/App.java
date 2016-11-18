@@ -129,7 +129,7 @@ public class App {
 		}
 		System.out.println("-- command arguments : " + cmd_args + "\n");
 
-		Process process = Runtime.getRuntime().exec(params);
+		Process process = Runtime.getRuntime().exec(cmd_args);
 		// Process process = new ProcessBuilder(
 		// cmd_args).start();
 		final InputStream is = process.getInputStream();
