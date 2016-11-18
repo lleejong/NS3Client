@@ -12,7 +12,7 @@ import java.net.Socket;
 public class App {
 
 	private static final String external_prog = "./shell_sim.sh";
-	private static final String ip = "172.17.0.2";
+	private static final String ip = "172.17.0.3";
 	static String strOutput = "";
 
 	public static void main(String[] args) {
@@ -67,6 +67,7 @@ public class App {
 			Messenger messenger = new Messenger(ip, 8888);
 			
 			messenger.sendMsg("[CHECK]/" + txLoss + "/" + txDelay+"/" + txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
+			System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
 			String fromServer = messenger.getMsg();
 			//System.out.println("--From Server : " + fromServer);
 			if(fromServer.startsWith("[HIT]")){
