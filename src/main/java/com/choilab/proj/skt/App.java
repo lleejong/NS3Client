@@ -29,7 +29,7 @@ public class App {
 			fileReader = new BufferedReader(new FileReader(fileName));
 			String line = null;
 			fileReader.readLine();
-			int rand = (int) (Math.random() * 20) + 1;
+			int rand = (int) (Math.random() * 3) + 1;
 			int cnt = 0;
 
 			double txLoss = -1;
@@ -61,26 +61,30 @@ public class App {
 			}
 			fileReader.close();
 			
-			String output = exec(external_prog, txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
-			System.out.println(output);
+			//String output = exec(external_prog, txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
+			//System.out.println(output);
 			
-//			Messenger messenger = new Messenger(ip, 8888);
-//			
-//			messenger.sendMsg("[CHECK]/" + txLoss + "/" + txDelay+"/" + txJitter + "/" + rxLoss + "," + rxDelay + "/" + rxJitter);
-//			String fromServer = messenger.getMsg();
-//			//System.out.println("--From Server : " + fromServer);
-//			if(fromServer.equals("[HIT]")){
-//				System.out.println("[HIT] " + txLoss + "," + txDelay+"," + txJitter + "," + rxLoss + "," + rxDelay + "," + rxJitter+" ");
-//			}
-//			else{
-//				System.out.println("[FALSE]");
-//				System.out.println("--Execute NS3-DCE .. ");
-//				String output = exec(txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
-//				System.out.println("--DCE Result : " + output);
-//				messenger.sendMsg(output);
-//			}
-//			
-//			messenger.close();
+			Messenger messenger = new Messenger(ip, 8888);
+			
+			messenger.sendMsg("[CHECK]/" + txLoss + "/" + txDelay+"/" + txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
+			String fromServer = messenger.getMsg();
+			//System.out.println("--From Server : " + fromServer);
+			if(fromServer.startsWith("[HIT]")){
+				double throughput = Double.parseDouble(fromServer.split("//")[1]);
+				//System.out.println("[HIT]/" + txLoss + "/" + txDelay+"/" + txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
+				System.out.println("--CACHE HIT");
+				System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
+				System.out.println("---Result : " + throughput);
+			}
+			else{
+				System.out.println("[MISS]");
+				System.out.println("--Execute NS3-DCE .. ");
+				String output = exec(txLoss+"", txDelay+"", txJitter+"", rxLoss+"", rxDelay+"", rxJitter+"");
+				System.out.println("--DCE Result : " + output);
+				messenger.sendMsg("[UPDATE]/" + output);
+			}
+			
+			messenger.close();
 			
 //			
 //			// communicate with server
