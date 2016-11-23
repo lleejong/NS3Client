@@ -72,7 +72,7 @@ public class App {
 			String fromServer = messenger.getMsg();
 			//System.out.println("--From Server : " + fromServer);
 			if(fromServer.startsWith("[HIT]")){
-				double throughput = Double.parseDouble(fromServer.split("//")[1]);
+				double throughput = Double.parseDouble(fromServer.split("/")[1]);
 				//System.out.println("[HIT]/" + txLoss + "/" + txDelay+"/" + txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
 				System.out.println("--CACHE HIT");
 				System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
