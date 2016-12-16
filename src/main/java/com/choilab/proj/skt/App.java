@@ -69,20 +69,21 @@ public class App {
 
 		try {
 
-			String ip = "127.0.0.1";
-			//String ip = args[0];
-			double txLoss = Double.parseDouble(args[1]);
-			double txDelay = Double.parseDouble(args[2]);
-			double txJitter = Double.parseDouble(args[3]);
+			//String ip = "127.0.0.1";
+			String ip = args[0];
+			int port = Integer.parseInt(args[1]);
+			double txLoss = Double.parseDouble(args[2]);
+			double txDelay = Double.parseDouble(args[3]);
+			double txJitter = Double.parseDouble(args[4]);
 
-			double rxLoss = Double.parseDouble(args[4]);
-			double rxDelay = Double.parseDouble(args[5]);
-			double rxJitter = Double.parseDouble(args[6]);
+			double rxLoss = Double.parseDouble(args[5]);
+			double rxDelay = Double.parseDouble(args[6]);
+			double rxJitter = Double.parseDouble(args[7]);
 
-			Messenger messenger = new Messenger(ip, 6789);
+			Messenger messenger = new Messenger(ip, port);
 
 			messenger.sendMsg("[CHECK]/" + txLoss + "/" + txDelay + "/" + txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
-			System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
+			//System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
 			String fromServer = messenger.getMsg();
 			// System.out.println("--From Server : " + fromServer);
 			if (fromServer.startsWith("[HIT]")) {
@@ -152,7 +153,7 @@ public class App {
 			cmd_args += " ";
 			cmd_args += s;
 		}
-		System.out.println("-- command arguments : " + cmd_args + "\n");
+		//System.out.println("-- command arguments : " + cmd_args + "\n");
 
 		Process process = Runtime.getRuntime().exec(cmd_args);
 		// Process process = new ProcessBuilder(
@@ -165,7 +166,7 @@ public class App {
 					String line;
 					BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 					while ((line = reader.readLine()) != null) {
-						System.out.println("- " + line);
+						//System.out.println("- " + line);
 						strOutput = line;
 					}
 				} catch (IOException e) {
