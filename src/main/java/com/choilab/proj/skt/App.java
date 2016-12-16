@@ -69,8 +69,8 @@ public class App {
 
 		try {
 
-			//String ip = "127.0.0.1";
-			String ip = args[0];
+			String ip = "127.0.0.1";
+			//String ip = args[0];
 			double txLoss = Double.parseDouble(args[1]);
 			double txDelay = Double.parseDouble(args[2]);
 			double txJitter = Double.parseDouble(args[3]);
