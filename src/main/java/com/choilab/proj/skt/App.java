@@ -80,6 +80,7 @@ public class App {
 			double rxDelay = Double.parseDouble(args[6]);
 			double rxJitter = Double.parseDouble(args[7]);
 
+			System.out.println(ip + " " + port);
 			Messenger messenger = new Messenger(ip, port);
 
 			messenger.sendMsg("[CHECK]/" + txLoss + "/" + txDelay + "/" + txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
