@@ -93,7 +93,7 @@ public class App {
 				// txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
 				//System.out.println("--CACHE HIT");
 				System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
-				System.out.println("---[HIT] Througput from Server : " + throughput);
+				System.out.println("---[HIT] Througput from Server : " + throughput + " Mbps");
 			} else {
 				//System.out.println("[MISS]");
 				//System.out.println("--Execute NS3-DCE .. ");
