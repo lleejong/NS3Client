@@ -80,7 +80,6 @@ public class App {
 			double rxDelay = Double.parseDouble(args[6]);
 			double rxJitter = Double.parseDouble(args[7]);
 
-			System.out.println(ip + " " + port);
 			Messenger messenger = new Messenger(ip, port);
 
 			messenger.sendMsg("[CHECK]/" + txLoss + "/" + txDelay + "/" + txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
@@ -92,14 +91,14 @@ public class App {
 				// System.out.println("[HIT]/" + txLoss + "/" + txDelay+"/" +
 				// txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
 				//System.out.println("--CACHE HIT");
-				System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
-				System.out.println("---[HIT] Througput from Server : " + throughput + " Mbps");
+				System.out.println("txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
+				System.out.println("-[HIT] Throughput from Cache : " + throughput + " Mbps");
 			} else {
 				//System.out.println("[MISS]");
 				//System.out.println("--Execute NS3-DCE .. ");
 				String output = exec((txLoss/100) + "", (txDelay/1000) + "", (txJitter/1000) + "", (rxLoss/100) + "", (rxDelay/1000) + "", (rxJitter/1000) + "");
-				System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
-				System.out.println("--[MISS] Throughput from DCE : " + output);
+				System.out.println("txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
+				System.out.println("-[MISS] Throughput from DCE : " + output);
 				messenger.sendMsg(output);
 			}
 
