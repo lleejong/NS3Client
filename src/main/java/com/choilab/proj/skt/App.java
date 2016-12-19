@@ -82,9 +82,12 @@ public class App {
 
 			Messenger messenger = new Messenger(ip, port);
 
+			System.out.println("AA");
 			messenger.sendMsg("[CHECK]/" + txLoss + "/" + txDelay + "/" + txJitter + "/" + rxLoss + "/" + rxDelay + "/" + rxJitter);
+			System.out.println("BB");
 			//System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
 			String fromServer = messenger.getMsg();
+			System.out.println("CC");
 			// System.out.println("--From Server : " + fromServer);
 			if (fromServer.startsWith("[HIT]")) {
 				double throughput = Double.parseDouble(fromServer.split("/")[1]);
