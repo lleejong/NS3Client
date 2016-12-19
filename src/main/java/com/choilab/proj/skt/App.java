@@ -97,7 +97,7 @@ public class App {
 			} else {
 				//System.out.println("[MISS]");
 				//System.out.println("--Execute NS3-DCE .. ");
-				String output = exec(txLoss + "", txDelay + "", txJitter + "", rxLoss + "", rxDelay + "", rxJitter + "");
+				String output = exec((txLoss/100) + "", (txDelay/1000) + "", (txJitter/1000) + "", (rxLoss/100) + "", (rxDelay/1000) + "", (rxJitter/1000) + "");
 				System.out.println("---txLoss : " + txLoss + " , txDelay : " + txDelay + " , txJitter : " + txJitter + " , rxLoss : " + rxLoss + ", rxDelay : " + rxDelay + ", rxJitter : " + rxJitter);
 				System.out.println("--[MISS] Throughput from DCE : " + output);
 				messenger.sendMsg(output);
