@@ -2,7 +2,7 @@
 #2
 
 #default sime time = 3
-SIM_TIME=13
+SIM_TIME=2
 
 args=("$@")
 ARGC=$#
@@ -11,7 +11,7 @@ ARGC=$#
 if [ $ARGC -gt 0 ]; then
 	if [ $(echo "${args[1]} > 2.0" | bc) -ne 0 ] 
 	    then
-		SIM_TIME=13; 
+		SIM_TIME=2; 
 	fi
 fi
 
