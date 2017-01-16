@@ -1,4 +1,4 @@
-package com.choilab.proj.skt;
+package proj.skt;
 
 import java.io.BufferedReader;
 import java.io.IOException;

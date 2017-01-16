@@ -1,4 +1,4 @@
-package com.choilab.proj.skt.NS3Client;
+package proj.skt.NS3Client;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
